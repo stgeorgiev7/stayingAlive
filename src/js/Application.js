@@ -13,10 +13,10 @@ export default class Application extends EventEmitter {
 
     this._beat = new Beat();
     console.log(typeof(Beat.events.BIT));
-    
-    this.addListener( this.emit(Beat.events.BIT), Beat.events.BIT, this._create());
 
     this.emit(Application.events.READY);
+    document.addEventListener(Beat.events.BIT, this._create());
+
   }
 
   _create() {
@@ -35,6 +35,7 @@ export default class Application extends EventEmitter {
       }
 
     }, 600);
+    
 
   }
 }
