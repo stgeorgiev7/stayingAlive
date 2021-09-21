@@ -16,13 +16,13 @@ export default class Application extends EventEmitter {
     this._beat = new Beat();
     const lyrics = ["Ah", "ha", "ha", "ha", "stayin' alive", "stayin' alive"];
 
-    this._beat.on('bit', () => {
+    this._beat.on(Beat.events.BIT, () => {
       for(let i =0; i < lyrics.length; i++) {
         this._create(lyrics[i]);
       }
     });
 
-    this._beat.emit(Beat.events.BIT);
+    this._beat.emit('bit');
 
     this.emit(Application.events.READY);
 
